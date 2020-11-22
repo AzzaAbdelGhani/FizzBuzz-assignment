@@ -6,6 +6,10 @@ package dssc.assignment.fizzbuzz;
 *For multiples of 5 it prints Buzz instead of the number.
 *For numbers which are multiples of both 3 and 5 it prints FizzBuzz.  */
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class FizzBuzz {
 
     public static void main(String... args) {
@@ -32,9 +36,23 @@ public class FizzBuzz {
     }
 
     public String convert(int number) {
-        if (number%3 == 0){
+        if (number%15 == 0){
+            return "FizzBuzz";
+        }
+        else if (number%5 == 0){
+            return "Buzz";
+        }
+        else if (number%3 == 0){
             return "Fizz";
         }
-        return Integer.toString(number);
+        else
+        {
+            return Integer.toString(number);
+        }
+    }
+
+    public void print() {
+        Stream<String> fizzBuzzes = IntStream.range(1,101).mapToObj(this::convert);
+        System.out.println(fizzBuzzes.collect(Collectors.joining(", ")));
     }
 }
