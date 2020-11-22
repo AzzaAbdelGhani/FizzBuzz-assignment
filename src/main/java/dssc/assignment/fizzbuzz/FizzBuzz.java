@@ -32,11 +32,6 @@ public class FizzBuzz {
     }
 
     public String convert(int number) {
-        if (number == 1)
-        {
-            return "1";
-        }
-        else
-            return "2";
+        return Integer.toString(number);
     }
 }
